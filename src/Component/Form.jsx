@@ -45,7 +45,7 @@ function Form() {
           localStorage.setItem('submittedData', JSON.stringify(formData));
 
       
-      const response = await fetch('http://localhost:3001','https://subcontract-backend-97436e1451f2.herokuapp.com/', {
+      const response = await fetch('https://subcontract-backend-97436e1451f2.herokuapp.com/', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
