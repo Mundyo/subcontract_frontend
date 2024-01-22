@@ -64,3 +64,35 @@ button{
     -ms-border-radius: 5px;
     -o-border-radius: 5px;
 }
+
+@media (max-width:767px){
+
+    .Container{
+
+        max-width: 20rem;
+        height:25rem;
+    }
+    h1{
+        font-size: 12px;
+        align-items: center;
+        margin-right: 1rem;
+        margin-left: 2rem !important;
+    }
+    h3{
+        font-size: 10px ;
+        margin-left: 1rem;
+    }
+    label{
+        font-size: 10px;
+    }
+   
+
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+    /* Styles for screens between 768px and 991px (e.g., tablets) */
+    .Container {
+        max-width: 30rem;
+        height: 35rem;
+    }
+}
