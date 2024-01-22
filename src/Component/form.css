@@ -70,7 +70,7 @@ button{
     .Container{
         margin-top: 5rem !important;
         max-width: 20rem;
-        height:30rem;
+        height:32rem;
         display: flex; /* Add display: flex; */
         flex-direction: column; /* Change flex-direction to column */
         /* align-items: center; */

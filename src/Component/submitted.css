@@ -52,8 +52,8 @@ img{
 @media(max-width: 767px){
 
     .container1{
-        margin-top: 1rem ;
-        max-width: 25rem;
+        margin-top: 3rem ;
+        max-width: 20rem;
         height: 30rem;
         margin-left: 1rem;
     }
@@ -62,11 +62,11 @@ img{
         }
         h1 img{
             max-width: 8rem;
-            margin-left: 2.5rem;
+            margin-left: 1rem;
         }
         .name{
             margin-left: 0;
-            font-size: 15px;
+            font-size: 12px;
         }
     }
  
