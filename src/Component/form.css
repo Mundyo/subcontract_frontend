@@ -68,9 +68,9 @@ button{
 @media (max-width:767px){
 
     .Container{
-
+        margin-top: 5rem !important;
         max-width: 20rem;
-        height:35rem;
+        height:30rem;
     }
     h1{
         font-size: 12px;
