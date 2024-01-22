@@ -71,21 +71,27 @@ button{
         margin-top: 5rem !important;
         max-width: 20rem;
         height:30rem;
+        display: flex; /* Add display: flex; */
+        flex-direction: column; /* Change flex-direction to column */
+        /* align-items: center; */
+        justify-content: flex-start;
     }
     h1{
-        font-size:8px;
-        align-items: center;
-        margin-right: 0 rem !important;
+        font-size:14px;
+        margin-left: 0rem !important;
+        margin-right: 3rem;
+        /* align-items: center;
+        margin-right: 2rem !important;
         margin-left: 0 !important;
         margin-top: 2rem;
-        font-weight: bolder;
+        font-weight: bolder; */
     }
     h3{
-        font-size: 6px ;
+        font-size: 10px ;
         font-weight: bolder;
-        margin-left: 1rem;
+        /* margin-left: 1rem; */
         margin-bottom: 2rem;
-        margin-left: 2rem !important;
+        margin-right: 2rem !important;
     }
     label{
         font-size: 10px;
