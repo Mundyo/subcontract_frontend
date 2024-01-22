@@ -32,7 +32,8 @@ h1{
 img{
     width: 10rem;
     height: 10rem;
-    margin-left: 15rem;
+    /* margin-right: 10rem; */
+    margin-left: 12rem;
 }
 .name{
     margin-left: 8rem;
@@ -58,11 +59,12 @@ img{
         margin-left: 1.5rem;
     }
         h1{
-            margin-left:5rem !important;
+            margin-left:2rem !important;
         }
         h1 img{
-            max-width: 8rem;
-            margin-left: 1rem;
+            max-width: 9rem;
+            margin-left: 3rem;
+            
         }
         .name{
             margin-left: 0;
