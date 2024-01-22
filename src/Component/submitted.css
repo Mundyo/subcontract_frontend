@@ -55,7 +55,7 @@ img{
         margin-top: 3rem ;
         max-width: 20rem;
         height: 30rem;
-        margin-left: 1rem;
+        margin-left: 1.5rem;
     }
         h1{
             margin-left:5rem !important;
@@ -67,6 +67,10 @@ img{
         .name{
             margin-left: 0;
             font-size: 12px;
+        }
+        .file-upload-content{
+            max-width: 6rem !important;
+            max-height: 6rem !important;
         }
     }
  

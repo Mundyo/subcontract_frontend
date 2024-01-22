@@ -22,7 +22,7 @@ function Submitted({ submittedData }) {
 
   return (
     <div className='container1'>
-      <h1>Subcontract Order Issue form submitted <img src = {process.env.PUBLIC_URL + '/done1.jpg'} alt= "" /> </h1>
+      <h1>FORM SUBMITTED <img src = {process.env.PUBLIC_URL + '/done1.jpg'} alt= "" /> </h1>
       <div className='name'>
         <>
        
