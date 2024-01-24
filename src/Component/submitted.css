@@ -71,8 +71,8 @@ img{
             font-size: 12px;
         }
         .file-upload-content{
-            max-width: 6rem !important;
-            max-height: 6rem !important;
+            max-width: 4rem !important;
+            max-height: 4rem !important;
         }
     }
  
