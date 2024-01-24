@@ -26,10 +26,10 @@ body{
 }
 h1{
     align-items: center;
-    margin-left: 7rem;
+    margin-left: 17rem !important;
 }
 h3{
-    margin-left:2.5rem;
+    margin-left:4rem;
 }
 
    .radio-group {
@@ -73,25 +73,27 @@ button{
         height:32rem;
         display: flex; /* Add display: flex; */
         flex-direction: column; /* Change flex-direction to column */
-        /* align-items: center; */
+        align-items: center;
         justify-content: flex-start;
     }
     h1{
         font-size:14px;
-        margin-left: 0rem !important;
-        margin-right: 3rem;
-         align-items: center;
+        margin-left: rem !important;
+        /* margin-right: 3rem; */
+         align-items: center !important;
+         justify-content: center !important;
         /* margin-right: 2rem !important;
         margin-left: 0 !important;
         margin-top: 2rem;
         font-weight: bolder; */
     }
     h3{
+        align-items: center !important;
         font-size: 10px ;
         font-weight: bolder;
-        /* margin-left: 1rem; */
+        margin-left: 2rem; 
         margin-bottom: 2rem;
-        margin-right: 2rem !important;
+        margin-right: 1rem !important;
     }
     label{
         font-size: 10px;

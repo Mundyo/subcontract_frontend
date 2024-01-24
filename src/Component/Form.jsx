@@ -45,7 +45,8 @@ function Form() {
           localStorage.setItem('submittedData', JSON.stringify(formData));
 
       
-      const response = await fetch('https://subcontract-backend-97436e1451f2.herokuapp.com/submit-form', {
+      // const response = await fetch('https://subcontract-backend-97436e1451f2.herokuapp.com/submit-form', {
+        const response = await fetch('https://subcontractor-backend-2-a838de589c9c.herokuapp.com/submit-form', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -75,7 +76,7 @@ function Form() {
         <Submitted submittedData={submittedData} />
       ) : (
         <form onSubmit={handleFormSubmit}>
-          <h1>SubContract Production Order Issue Tracker</h1>
+          <h1>SubContract Order Tracker</h1>
           <h3>Collect information on issues with Subcontract Production Order and Supplier QAD usage.</h3>
 
           <div className='form-group'>
