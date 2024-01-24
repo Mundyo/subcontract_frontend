@@ -73,6 +73,7 @@ img{
         .file-upload-content{
             max-width: 4rem !important;
             max-height: 4rem !important;
+            margin-right: 2rem !important;
         }
     }
  
