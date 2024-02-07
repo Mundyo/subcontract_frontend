@@ -1,7 +1,4 @@
 
-
-
-
 // import React, { useState } from 'react';
 // import './form.css';
 // import Submitted from './submitted';
@@ -16,17 +13,14 @@
 //     supplier: '',
 //     issue: '',
 //     productionOrderId: '',
-//     fileUpload: null,
+//     fileUpload: '',
 //     textArea: '',
 //   });
 //   const [submittedData, setSubmittedData] = useState(null);
 
 //   const handleInputChange = (event) => {
-//     const { id, value, type, files } = event.target;
-
-//     if(type === 'file'){
-//       setFormValues((prevValues) => ({...prevValues, fileUpload: files[0]}));
-//     }else if (id === 'supplier'){
+//     const { id, value } = event.target;
+//     if (id === 'supplier'){
 //       setFormValues((prevValues) => ({ ...prevValues, supplier: value }));
 //     } else {
 //       setFormValues((prevValues) => ({ ...prevValues, [id]: value }));
@@ -48,8 +42,8 @@
 //           localStorage.setItem('submittedData', JSON.stringify(formData));
 
       
-//       const response = await fetch('https://subcontract-backend-97436e1451f2.herokuapp.com/submit-form', {
-//         // const response = await fetch('https://subcontractor-backend-2-a838de589c9c.herokuapp.com/submit-form', {
+//       // const response = await fetch('https://subcontract-backend-97436e1451f2.herokuapp.com/submit-form', {
+//         const response = await fetch('https://https://subackend-327fc6ed026e.herokuapp.com/', {
 //         method: 'POST',
 //         headers: {
 //           'Content-Type': 'application/json',
@@ -78,7 +72,7 @@
 //       {submittedData ? (
 //         <Submitted submittedData={submittedData} />
 //       ) : (
-//         <form onSubmit={handleFormSubmit} encType='multipart/form-data'>
+//         <form onSubmit={handleFormSubmit}>
 //           <h1>SubContract Order Tracker</h1>
 //           <h3>Collect information on issues with Subcontract Production Order and Supplier QAD usage.</h3>
 
@@ -191,7 +185,6 @@
 //                 id='fileUpload'
 //                 name='fileUpload'
 //                 onChange={handleInputChange}
-//                 multiple
 //               />
 //             </div>
 //           </div>
@@ -207,63 +200,62 @@
 
 // export default Form;
 
-
-
-
-
-
-
-
 import React, { useState } from 'react';
 import './form.css';
 import Submitted from './submitted';
-import { useNavigate } from 'react-router-dom' ;
+import { useNavigate } from 'react-router-dom';
 
 function Form() {
-
-  const navigate= useNavigate();
+  const navigate = useNavigate();
   const [selectedIssue, setSelectedIssue] = useState('');
   const [formValues, setFormValues] = useState({
     name: '',
     supplier: '',
     issue: '',
     productionOrderId: '',
-    fileUpload: '',
+    fileUpload: null, 
     textArea: '',
   });
   const [submittedData, setSubmittedData] = useState(null);
 
   const handleInputChange = (event) => {
     const { id, value } = event.target;
-    if (id === 'supplier'){
+    if (id === 'supplier') {
       setFormValues((prevValues) => ({ ...prevValues, supplier: value }));
     } else {
       setFormValues((prevValues) => ({ ...prevValues, [id]: value }));
     }
   };
-    
 
   const handleIssueChange = (event) => {
     setSelectedIssue(event.target.value);
     setFormValues((prevValues) => ({ ...prevValues, issue: event.target.value }));
   };
 
+  const handleFileChange = (event) => {
+    const file = event.target.files[0];
+    setFormValues((prevValues) => ({ ...prevValues, fileUpload: file }));
+  };
+
   const handleFormSubmit = async (event) => {
     event.preventDefault();
     try {
-      const formData = { ...formValues, textArea: selectedIssue === 'other' ? formValues.textArea : null, };
-         
-         
-          localStorage.setItem('submittedData', JSON.stringify(formData));
+      const formData = new FormData();
+      formData.append('name', formValues.name);
+      formData.append('supplier', formValues.supplier);
+      formData.append('issue', formValues.issue);
+      formData.append('productionOrderId', formValues.productionOrderId);
+      formData.append('textArea', selectedIssue === 'other' ? formValues.textArea : '');
 
-      
-      const response = await fetch('https://subcontract-backend-97436e1451f2.herokuapp.com/submit-form', {
-        // const response = await fetch('https://subcontractor-backend-2-a838de589c9c.herokuapp.com/submit-form', {
+      if (formValues.fileUpload) {
+        formData.append('fileUpload', formValues.fileUpload);
+      }
+
+      localStorage.setItem('submittedData', JSON.stringify(formData));
+
+      const response = await fetch('https://dashboard.heroku.com/apps/subackend', {
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(formData),
+        body: formData,
       });
 
       const result = await response.json();
@@ -271,9 +263,7 @@ function Form() {
       if (response.ok) {
         console.log('Form submitted successfully!');
         setSubmittedData(formData);
-       
         navigate('/result');
-
       } else {
         console.error('Form submission failed:', result.message);
       }
@@ -288,30 +278,29 @@ function Form() {
         <Submitted submittedData={submittedData} />
       ) : (
         <form onSubmit={handleFormSubmit}>
-          <h1>SubContract Order Tracker</h1>
-          <h3>Collect information on issues with Subcontract Production Order and Supplier QAD usage.</h3>
+                 <h1>SubContract Order Tracker</h1>
+           <h3>Collect information on issues with Subcontract Production Order and Supplier QAD usage.</h3>
 
-          <div className='form-group'>
-            <label htmlFor='name'>Enter your name:</label>
-            <input type='text' id='name' name='name' onChange={handleInputChange} />
-          </div>
+         <div className='form-group'>
+             <label htmlFor='name'>Enter your name:</label>
+             <input type='text' id='name' name='name' onChange={handleInputChange} />
+           </div>
 
-          <div className='form-group'>
+           <div className='form-group'>
             <label htmlFor='supplier'>Supplier:</label>
-            <select id='supplier' name='supplier' onChange={handleInputChange}>
-              <option value='Curtis'></option>
+             <select id='supplier' name='supplier' onChange={handleInputChange}>
+               <option value='Curtis'></option>
               <option value='Curtis'>Curtis</option>
               <option value='supplier2'>Supplier 2</option>
-            </select>
-          </div>
+             </select>
+         </div>
 
           <div className='form-group'>
             <div className='form-group'>
-              <label>Issue:</label>
-              <div className='radio-group'>
+             <label>Issue:</label>              <div className='radio-group'>
             
                     <div>
-                     <input
+                    <input
                       type='radio'
                       id='missingMaterial'
                       name='issue'
@@ -399,7 +388,7 @@ function Form() {
                 type='file'
                 id='fileUpload'
                 name='fileUpload'
-                onChange={handleInputChange}
+                onChange={handleFileChange}
               />
             </div>
           </div>
@@ -414,4 +403,3 @@ function Form() {
 }
 
 export default Form;
-
